@@ -1,0 +1,379 @@
+% $Header: /home/vedranm/bitbucket/beamer/solutions/generic-talks/generic-ornate-15min-45min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass{beamer}
+
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\usepackage{marvosym} % For \Smiley
+\usepackage{verbatim} % for \verbatiminput
+
+\title[Quick Intro to Python] % (optional, use only with long paper titles)
+{Quick Intro to Python}
+
+% \subtitle
+% {} % (optional)
+
+\author%[Author, Another] % (optional, use only with lots of authors)
+{Steven~Clontz}%\inst{1} \and S.~Another\inst{2}}
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Auburn University] % (optional, but mostly needed)
+{
+  %\inst{1}%
+  COMP 7970\\
+  Auburn University}
+  %\and
+  %\inst{2}%
+  %Department of Theoretical Philosophy\\
+  %University of Elsewhere}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[13-02-??] % (optional)
+{February ??, 2013}
+
+\subject{Quick Intro to Python}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+ \pgfdeclareimage[height=1cm]{university-logo}{auburn_logo.png}
+ \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>{Outline}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Table of Contents}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+% Since this a solution template for a generic talk, very little can
+% be said about how it should be structured. However, the talk length
+% of between 15min and 45min and the theme suggest that you stick to
+% the following rules:  
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+\section{Introduction}
+
+\begin{frame}{Abstract}%{Subtitles are optional.}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+  \begin{itemize}
+  \item
+    Presentation available at https://github.com/StevenClontz/2013-python-presentation
+  \pause
+  \item
+    I'll talk about basic syntax, data types, loops, functions, conditionals etc. in Python.
+    \pause
+  \item
+    It should be enough to get anyone started hacking, at least.
+  \end{itemize}
+\end{frame}
+
+\section{Getting Started}
+
+\begin{frame}{Getting Started}
+
+  \begin{itemize}
+  \item
+    Python's syntax encourages beautiful code, using whitespace to organize rather than combinations of braces and semicolons.
+  \pause
+  \item
+    We also don't worry about declaring variables or defining complex data types - most of what you'll need comes in the box.
+  \pause
+    If it's not there, we can always import it.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\textbf{C and Python:}
+\begin{verbatim}
+void foo(int x)        def foo(x):
+{if (x == 0) {           if x == 0:
+                           bar()
+    bar();baz();           baz()
+                         else:
+  } else {                 qux(x)
+    qux(x);                foo(x - 1)
+    foo(x - 1);}
+}
+\end{verbatim}
+\end{frame}
+
+% \begin{frame}[fragile]
+% \textbf{Python Code:}
+
+% \verbatiminput{code/syntax_example.py}
+% \end{frame}
+
+% \begin{frame}[fragile]
+% \textbf{Output:}
+
+% \begin{verbatim}
+% Let's say hi to everyone five times
+% Hello world! (x1)
+% Hello world! (x2)
+% Hello world! (x3)
+% Hello world! (x4)
+% Hello world! (x5)
+% Here's a random decimal number between 0 and...
+% 32.2
+% \end{verbatim}
+% \end{frame}
+
+\section{Data Types}
+
+\begin{frame}[fragile]{Data Types}
+  \begin{itemize}
+  \item
+    Strings:
+
+    \verb\name = "Stevie"\
+
+    \verb\hello = 'Hi %s' % name  # or 'Hi $name'\
+
+    \verb\blank = ""  # or str()\
+
+  \pause
+  \item
+    Numbers:
+
+    \verb\three = 1 + 2  # an integer\
+
+    \verb\one_point_two_ish = -1 + 2.2  # a float\
+
+    \verb\degree_135 = -2 + 2j  # gaussian integer\
+
+  \pause
+    \begin{itemize}
+      \item
+        Big numbers? No problem!
+
+        \verb\small = 3\
+
+        \verb\big = small**small**small\
+
+        \verb\  # 3^(3^3) = 7625597484987\
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Data Types}
+  Iterables:
+  \pause
+  \begin{itemize}
+  \item
+    Lists:
+
+    \verb\less_than_four = [0, 1, 2, 3]  # or range(4) \
+
+    \verb\two_words = list().append("Hi").append("Mom")\
+
+    \verb\comprende = [2**n for n in less_than_four]\
+
+    \verb\  # [1, 2, 4, 8]\
+  \pause
+  \item
+    Tuples:
+
+    \verb\five_away = (3, 4)\
+
+    \verb\five_away.append(1) # ERROR!\
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Data Types}
+  More iterables:
+
+  \begin{itemize}
+  \item
+    Dictionaries:
+
+\begin{verbatim}
+named = {
+  "one": 1,
+  "two comma three": (2, 3),
+  4: "four (backwards)"
+}
+\end{verbatim}
+
+  \verb\  # named['one'] == 1\
+
+  \verb\emptydict = dict()  # or {}\
+  \pause
+  \item
+    Sets:
+
+    \verb\no_dupes = set([1, 2, 1, "two"])\
+
+    \verb\  # or {1, 2, "two"}\
+
+    \verb\emptyset = set()  # not {}\
+
+  \end{itemize}
+\end{frame}
+
+\section{Operators}
+
+\begin{frame}[fragile]{Operators}
+ 
+    \verb\3 == 2 + 1\
+ 
+    \verb\3 == 1.5 * 2\
+
+    \verb\3 == 0.6 * 5\
+
+    \verb\3 != "three"\
+
+    \verb\True and (1 == 3 - 2)\
+
+    \verb\some_int == (some_int / 3) * 3 + some_int % 3\
+
+    \verb\  # Warning: Python 3 requires some_int // 3\
+
+\end{frame}
+
+\section{Functions}
+
+\begin{frame}[fragile]{Functions}
+ 
+\begin{verbatim}
+def list_m_powers(x, m):
+  n = 1
+  powers = []
+  while n < m:
+    powers.append(x**n)
+    n += 1
+  return powers
+\end{verbatim}
+\pause
+\begin{verbatim}
+simple = lambda x, m: [x**n for n in range(1, m)]
+
+  # list_m_powers(2, 5) == simple(2, 5) 
+  # == [2, 4, 8, 16, 32]
+\end{verbatim}
+
+\end{frame}
+
+\section{Loops, Conditionals}
+
+\begin{frame}[fragile]{Loops, Conditionals}
+ 
+\begin{verbatim}
+def do_stuff(items):
+  copy = items[:]
+  while copy != []:
+    item = copy.pop()
+    for index, numb in enumerate(item):
+      print numb**index
+    if len(item) < 3:
+      print "That was easy!\n"
+    else:
+      print "Whew, now we're done!\n"
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+\begin{verbatim}
+# do_stuff([[1, 2], [3, 5, 7, -4]]) returns...
+1
+5
+49
+-64
+Whew, now we're done!
+
+1
+2
+That was easy!
+\end{verbatim}
+
+\end{frame}
+
+
+\begin{frame}
+That's all folks.
+\end{frame}
+
+
+\end{document}
+
+
